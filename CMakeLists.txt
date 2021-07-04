@@ -5,5 +5,9 @@ project(SDL2Template)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
-add_executable(SDL2Template main.cpp)
-target_link_libraries(SDL2Template)
+FILE(GLOB_RECURSE SOURCES src/*.cpp
+                          src/*.h
+)
+
+add_executable(SDL2Template ${SOURCES})
+target_link_libraries(SDL2Template ${SDL2_LIBRARIES} SDL2_image)
